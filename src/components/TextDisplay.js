@@ -1,22 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Text from './Text';
 
 var TextDisplay = React.createClass({
-  handleDestroy: function(task) {
-    this.setState({
-      tasks: this.props.tasks
-    })
-    console.log(this.props.tasks)
+  handleDeleting: function(e) {
+    this.props.onDelete(this.props.index);
   },
-  render() {
+  render: function() {
     return (
       <li>
         {this.props.task}
-        <button className="button" onClick={this.handleDestroy}>x</button>
+        <button className="button" onClick={this.handleDeleting}>x</button>
       </li>
     )
   }
 });
 
-export default TextDisplay
+export default TextDisplay;

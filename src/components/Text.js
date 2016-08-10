@@ -8,12 +8,12 @@ var Text = React.createClass({
     var task = this.refs.task.value;
     console.log(task);
     if(task.length > 0) {
-      this.refs.task.value = ''
-      this.props.onEnter(task)
+      this.refs.task.value = '';
+      this.props.onEnter(task);
     }
   },
 
-  render() {
+  render: function() {
     return (
       <div>
         <form onSubmit = {this.onFormSubmit}>

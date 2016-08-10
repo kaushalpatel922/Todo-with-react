@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Text from './components/Text';
 import TextDisplay from './components/TextDisplay'
@@ -15,22 +14,24 @@ var App = React.createClass({
       tasks: this.state.tasks.concat(task)
     })
   },
-  handleDestroy: function(task) {
+  handleDelete: function(index) {
+    this.state.tasks.splice(index,1)
     this.setState({
-      tasks: this.state.tasks.pop(task)
+      tasks: this.state.tasks
     })
   },
 
   render: function() {
     return (
       <div className="App">
+        <h2>To-do list</h2>
         <Text onEnter= {this.handleSearch}/>
-          <ul>
-            {this.state.tasks.map(function(tasks, index) {
-            return (
-              <TextDisplay task={tasks}/>
-            )
-          })}
+          <ul className="new-tasks">
+            {this.state.tasks.map(function(tsk, index) {
+              return (
+                <TextDisplay index={index} task={tsk} key={index} onDelete={this.handleDelete}/>
+              )
+            }.bind(this))}
           </ul>
       </div>
     );
